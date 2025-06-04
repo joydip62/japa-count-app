@@ -20,7 +20,10 @@ const app = express();
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin || origin === "http://localhost:3000") {
+      if (
+        !origin ||
+        origin === "https://japa-counter-app-client.onrender.com"
+      ) {
         // allow requests from localhost (dev) or file:// (Electron app)
         callback(null, true);
       } else {

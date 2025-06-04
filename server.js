@@ -38,10 +38,10 @@ app.get("/", (req, res) => {
 app.use(express.json()); // Needed to parse JSON bodies
 
 // Use the auth routes
-app.use("/api/auth", authRoutes);
+// app.use("/api/auth", authRoutes);
 
 // Use the User Daily Round
-app.use("/api/rounds", roundRoutes); 
+// app.use("/api/rounds", roundRoutes); 
 
 // MongoDB connection
 mongoose

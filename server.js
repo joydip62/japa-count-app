@@ -17,14 +17,17 @@ const app = express();
 //     credentials: true,
 //   })
 // );
+
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (
-        !origin ||
-        origin === "https://japa-counter-app-client.onrender.com"
-      ) {
-        // allow requests from localhost (dev) or file:// (Electron app)
+      const allowedOrigins = [
+        "https://japa-counter-app-client.onrender.com",
+        "http://localhost:3000", // ✅ add this
+        undefined, // ✅ allow undefined for Electron (file://)
+      ];
+
+      if (allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
@@ -33,6 +36,23 @@ app.use(
     credentials: true,
   })
 );
+
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       if (
+//         !origin ||
+//         origin === "https://japa-counter-app-client.onrender.com"
+//       ) {
+//         // allow requests from localhost (dev) or file:// (Electron app)
+//         callback(null, true);
+//       } else {
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     },
+//     credentials: true,
+//   })
+// );
 
 app.get("/", (req, res) => {
   res.json({ message: "Hello from backend server.js" });

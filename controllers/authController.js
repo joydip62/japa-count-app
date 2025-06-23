@@ -68,11 +68,10 @@ exports.forgetPassword = async (req, res) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
-    // const resetLink = `${process.env.FRONTEND_URL}/reset-password/${token}`;
-    // const resetLink = `https://japa-counter-app-client.onrender.com/reset-redirect?token=${token}`;
-    // const resetLink = `${process.env.FRONTEND_URL}/reset-redirect?token=${token}`;
-    const resetLink = `${process.env.FRONTEND_URL}/#/reset-password?token=${token}`;
 
+    // const resetLink = `${process.env.FRONTEND_URL}/#/reset-password?token=${token}`;
+
+    const resetLink = `japa://reset-password?token=${token}`;
 
 
 
@@ -97,6 +96,8 @@ exports.forgetPassword = async (req, res) => {
          style="display: inline-block; padding: 12px 24px; background-color: #007bff; color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">
          Reset Password
       </a>
+      <a href="japa://reset-password?token=abc123">Reset Password</a>
+
 
       <p style="margin-top: 20px;">If the button doesn’t work, copy this link into your browser:</p>
       <p style="word-break: break-all;">${resetLink}</p>

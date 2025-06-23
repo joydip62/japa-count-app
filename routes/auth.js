@@ -54,6 +54,12 @@ router.post("/login", authController.login);
 
 // profile
 
+router.post("/forgot-password", authController.forgetPassword);
+
+// router.post("/reset-password/:token", authController.resetPassword);
+
+router.post("/reset-password", authController.resetPassword);
+
 
 router.get("/profile", authMiddleware, (req, res) => {
   res.json({

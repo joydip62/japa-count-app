@@ -71,7 +71,8 @@ exports.forgetPassword = async (req, res) => {
     // const resetLink = `${process.env.FRONTEND_URL}/reset-password/${token}`;
     // const resetLink = `https://japa-counter-app-client.onrender.com/reset-redirect?token=${token}`;
     // const resetLink = `${process.env.FRONTEND_URL}/reset-redirect?token=${token}`;
-    const resetLink = `${process.env.FRONTEND_URL}/reset-password?token=${token}`;
+    const resetLink = `${process.env.FRONTEND_URL}/#/reset-password?token=${token}`;
+
 
 
 

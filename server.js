@@ -5,6 +5,7 @@ const cors = require("cors");
 
 const authRoutes = require("./routes/auth");
 const roundRoutes = require("./routes/rounds");
+const adminRoutes = require("./routes/admin");
 
 
 const app = express();
@@ -23,8 +24,8 @@ app.use(
     origin: function (origin, callback) {
       const allowedOrigins = [
         "https://japa-counter-app-client.onrender.com",
-        "http://localhost:3000", // ✅ add this
-        undefined, // ✅ allow undefined for Electron (file://)
+        "http://localhost:3000", 
+        undefined, 
       ];
 
       if (allowedOrigins.includes(origin)) {
@@ -65,6 +66,9 @@ app.use("/api/auth", authRoutes);
 
 // Use the User Daily Round
 app.use("/api/rounds", roundRoutes); 
+
+// Use the Admin
+app.use("/api/admin", adminRoutes); 
 
 // MongoDB connection
 mongoose
